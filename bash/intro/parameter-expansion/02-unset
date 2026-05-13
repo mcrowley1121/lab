@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Description: Setting default values for unset variables
+
+one='hello'
+# Requires double quotes or it will output literally $1 as a string
+two="$1"
+
+echo "${one:-foo}"
+echo "${two:-bar}"

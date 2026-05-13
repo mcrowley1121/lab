@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Description: Iterate over lines in a file using `-r` to treat backslashes as literals and IFS= to not trim whitepsace.
+
+# Providing usage notes
+case "$1" in
+    --help|-h)
+        echo "Usage: $0 [file]"
+	echo "    Iterates over lines in a file, preserving exact formatting."
+	echo "    If no file is given, reads from standard input."
+	echo ""
+	echo "Examples:"
+	echo "    $0 /etc/hosts"
+	echo "    cat /etc/hosts | $0"
+	exit 0
+	;;
+    "")
+        echo "No file specified... Reading from standard input."
+	echo "For help: $0 --help"
+	;;
+esac
+
+# Accepting file as input or defaulting to standard input so that file can be piped to command
+input="${1:--}"
+
+# IFS acts as a delimiter for a string of text used to identify points of separation 
+# Setting IFS to empty makes sure the line is captured exactly as it is and that read does not strip or split characters.
+while IFS= read -r line; do
+    echo "Processing: $line"
+done < "$input"

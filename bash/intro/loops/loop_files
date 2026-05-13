@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Description: Loop through files using globbing
+
+for file in *; do
+    echo "$file"
+done
+
+# Avoid using command substitution like:
+# for $file in ($ls); do
+# This leads to issues with files that have spaces

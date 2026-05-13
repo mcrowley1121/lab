@@ -1,0 +1,10 @@
+#!/bin/bash
+
+my_function() {
+    local name="Changed" # Always use local variables inside functions
+    echo "Inside: $name"
+}
+
+name="Original"
+my_function
+echo "Outside: $name"

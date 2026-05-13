@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "======================================="
+echo "    ${GREETING:-Hello}, ${NAME:-$(whoami)}!"
+echo "    Running in container: $(hostname)"
+echo "======================================="

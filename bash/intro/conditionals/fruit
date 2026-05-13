@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Description: Take fruit as input and outputs its color
+
+if [[ $# -ne 1 ]]; then
+    # Log error message to console for human
+    echo "Usage: $0 <fruit>" >&2
+    # Log error message for system
+    exit 1
+fi
+
+# Set fruit name to lowercase
+fruit="${1,,}"
+
+case "$fruit" in
+    apple)
+        echo "Apples are red, green, or yellow."
+	;;
+    banana)
+        echo "Bananas are green, yellow, or brown."
+	;;
+    kiwi)
+        echo "Kiwis are green or brown."
+	;;
+    *)
+        echo "Uknown fruit: $fruit" >&2
+	exit 1
+	;;
+esac

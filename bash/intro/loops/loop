@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for name in Alice Bob CHarlie; do
+    echo "Hello, $name"
+done

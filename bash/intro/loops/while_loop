@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Description: Demo a simple while loop and increment counter with arithmetic incrementor
+# Use 'while' loops when you don't know the content of the list and are waiting for conditions.
+
+count=1
+while [[ $count -le 5 ]]; do
+     echo "Count: $count"
+     ((count++))
+done
+
+
+## Arithmetic incrememnting
+## ((count++))
+## ((count--))
+## ((count += 5))

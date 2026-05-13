@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Description: Get the extension of the provided file
+# Functions in bash don't return values like python; need echo and $() to pass value back
+
+case "$1" in
+    --help|-h)
+        echo "Usage: $0 <filename>"
+        echo ""
+        echo "Returns the extension from the file you provide."
+        exit 0
+        ;;
+    "")
+        echo "No file specified. Use $0 --help for usage notes." >&2
+        exit 1
+        ;;
+esac
+
+file="$1"
+
+[[ -f "$file" ]] || { echo "Error: '$file' is not a valid file." >&2; exit 1; }
+
+get_extension() {
+    local filename="$1"
+    echo "${filename##*.}"  # From left to right, trim the longest match (greedy) of content up to and including "."
+}
+
+ext=$(get_extension "$file")
+echo "$ext"

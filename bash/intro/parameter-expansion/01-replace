@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Description: Replacing text with parameter expansions
+
+old="She sells seashells by the sea shore."
+echo "$old"
+
+# Single '/' replaces first occurrence
+new=${old/sea/ocean}
+echo "$new"
+
+# Double '//' replaces globally
+# Note: Replaces all instances of 'sea', including inside other words like 'seashells'
+newer=${old//sea/ocean}
+echo "$newer"

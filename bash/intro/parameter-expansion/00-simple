@@ -1,0 +1,13 @@
+#!/bin/bash
+# Parameter expansion to manipulate filename path
+
+filename="/home/chocolate/chip/cookies.txt"
+echo "input: $filename"
+
+# '##' or '%%' means be greedy up until the last time you encounter the character
+basename=${filename##*/}
+echo "basename: $basename"
+
+# '#' or '%' means truncate up through the first encounter of the character
+dirname=${filename%/*}
+echo "dirname: $dirname"

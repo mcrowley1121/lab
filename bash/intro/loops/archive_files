@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Description: Used to archive all .txt files
+# Don't overwite existing backups and make sure each file is dated
+# Runs only in current directory
+
+for file in *.txt; do
+    [[ -f "$file" ]] || continue
+    [[ "$file" == backup_* ]] && continue
+    base="${file%.txt}"
+    newname="backup_${base}_$(date +%Y%m%d).txt"
+    mv "$file" "$newname"
+    echo "Moved $file to $newname"
+done

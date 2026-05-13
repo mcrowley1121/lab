@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Description: Manipulate string casing with parameter expansion
+
+s="Hello World!"
+echo "input: $s"
+
+echo ",,: ${s,,}"
+echo "^^: ${s^^}"

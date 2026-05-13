@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Description: Process regular files within a directory, identifying hidden files and excluding directories
+
+# Using shell options to return an empty list instead of a literal '.' when no match is found
+shopt -s nullglob
+
+# All caps for global environment variabel
+TARGET="${1:-.}" # Default to current directory if nothing is set
+
+for file in "$TARGET"/.* "$TARGET"/*; do
+    basename=$(basename "$file") # Extract filename from full file path
+    [[ "$basename" == .* ]] && echo "Hidden file: $basename" && continue
+    [[ -f "$file" ]] || continue
+    echo "Processing: $basename"
+done

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Description: Challenge to list all dot files
+# Skip all regular files and print file names.
+
+shopt -s nullglob # helps stop this output "Found hidden file: ./.*" in conjunction with the file check below
+
+TARGET="${1:-.}" # Sets default directory to current directory or accepts first argument as target directory
+
+for file in "$TARGET"/.*; do # Loops through files starting with "." in target directory
+    [[ -f "$file" ]] || continue # Checks if $file is a file, if so, continues loop; otherwise passes to next object
+    echo "Found hidden file: $file" # Prints message to terminal
+done # Ends loop
