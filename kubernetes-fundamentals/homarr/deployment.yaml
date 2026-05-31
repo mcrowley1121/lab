@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    meta.helm.sh/release-name: homarr
+    meta.helm.sh/release-namespace: homarr
+  creationTimestamp: "2026-05-24T00:24:40Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: homarr
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: homarr
+    app.kubernetes.io/version: v1.60.0
+    helm.sh/chart: homarr-8.19.0
+  name: homarr
+  namespace: homarr
+  resourceVersion: "231695"
+  uid: 672cbef2-bdd9-4402-8884-fdb21672b9b8
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: homarr
+      app.kubernetes.io/name: homarr
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: homarr
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: homarr
+        app.kubernetes.io/version: v1.60.0
+        hello: world
+        helm.sh/chart: homarr-8.19.0
+    spec:
+      containers:
+      - env:
+        - name: ENABLE_DOCKER
+          value: "false"
+        - name: ENABLE_KUBERNETES
+          value: "false"
+        - name: AUTH_LDAP_BASE
+        - name: AUTH_LDAP_BIND_DN
